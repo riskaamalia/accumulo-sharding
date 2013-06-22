@@ -65,7 +65,7 @@ public class ShardExampleDriver {
 
         BatchWriter bw = connector.createBatchWriter(tableName, config);
         index(partitionCount, new Text("D1"), "Now is the time for all men to come to the aid of thier country.", splitRegex, bw);
-        index(partitionCount, new Text("D2"), "The quick brown fox jumps over the lazy dog.", splitRegex, bw);
+        index(partitionCount, new Text("D1"), "The quick brown fox jumps over the lazy dog.", splitRegex, bw);
         bw.close();
 
         Scanner scanner = connector.createScanner(tableName, new Authorizations());
@@ -81,5 +81,6 @@ public class ShardExampleDriver {
     public static void main(String[] args) throws AccumuloException, AccumuloSecurityException, TableExistsException, TableNotFoundException {
         ShardExampleDriver driver = new ShardExampleDriver();
         driver.process();
+        System.out.println((1001 % 5));
     }
 }
